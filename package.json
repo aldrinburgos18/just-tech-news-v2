@@ -1,0 +1,24 @@
+{
+  "name": "just-tech-news-v2",
+  "version": "2.0.0",
+  "description": "A tech news website where users can post, upvote, and comment on links to news articles.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aldrinburgos18/just-tech-news-v2.git"
+  },
+  "author": "Aldrin Burgos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aldrinburgos18/just-tech-news-v2/issues"
+  },
+  "homepage": "https://github.com/aldrinburgos18/just-tech-news-v2#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  }
+}
