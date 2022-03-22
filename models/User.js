@@ -18,7 +18,7 @@ User.init(
       //turn on auto increment
       autoIncrement: true,
     },
-    //define id column
+    //define userna column
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -59,4 +59,4 @@ User.init(
   }
 );
 
-module.exports = "user";
+module.exports = User;
