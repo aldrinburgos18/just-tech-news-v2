@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -45,6 +46,21 @@ User.init(
     },
   },
   {
+    hooks: {
+      //pass password to bcrypt before creating user
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      //pass password to bcrypt after updating user
+      async beforeUpdate(updatedUserData) {
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
+        return updatedUserData;
+      },
+    },
     //TABLE CONFIG OPTIONS
     //pass in direct connection to database
     sequelize,
