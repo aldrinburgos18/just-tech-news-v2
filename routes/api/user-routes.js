@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+//get all users
 router.get("/", (req, res) => {
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -12,6 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
+//get a single user
 router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
@@ -32,6 +34,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//create a user
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -45,6 +48,7 @@ router.post("/", (req, res) => {
     });
 });
 
+//user login
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -64,6 +68,7 @@ router.post("/login", (req, res) => {
   });
 });
 
+//update a user
 router.put("/:id", (req, res) => {
   //if req.body has exact key/values pairs to match the model, use `req.body` instead
   User.update(req.body, {
@@ -85,6 +90,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
+//delete a user
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
