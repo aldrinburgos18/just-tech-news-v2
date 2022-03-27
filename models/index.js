@@ -1,7 +1,7 @@
 const User = require("./User");
 const Post = require("./Post");
 const Vote = require("./Vote");
-//create association
+// create associations
 User.hasMany(Post, {
   foreignKey: "user_id",
 });
@@ -12,7 +12,7 @@ Post.belongsTo(User, {
 
 User.belongsToMany(Post, {
   through: Vote,
-  as: "voted_post",
+  as: "voted_posts",
   foreignKey: "user_id",
 });
 
