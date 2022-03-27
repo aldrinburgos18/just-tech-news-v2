@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { Post, User, Vote } = require("../../models");
 
 //get all users
 router.get("/", (req, res) => {
@@ -20,10 +20,22 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Post,
+        attributes: ["id", "title", "post_url", "created_at"],
+      },
+      /* {
+        model: Post,
+        through: Vote,
+        attributes: ["title"],
+        as: "voted_posts",
+      }, */
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this ID!" });
+        res.status(404).json({ message: "No user found with this id" });
         return;
       }
       res.json(dbUserData);
