@@ -34,7 +34,9 @@ router.get("/", (req, res) => {
     ],
     order: [["created_at", "DESC"]],
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => {
+      res.json(dbPostData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
