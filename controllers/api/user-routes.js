@@ -103,6 +103,17 @@ router.post("/login", (req, res) => {
   });
 });
 
+//user logout
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 //update a user
 router.put("/:id", (req, res) => {
   //if req.body has exact key/values pairs to match the model, use `req.body` instead
