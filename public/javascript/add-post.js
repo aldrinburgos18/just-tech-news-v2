@@ -2,7 +2,11 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value;
-  const post_url = document.querySelector('input[name="post-url"]').value;
+  let post_url = document.querySelector('input[name="post-url"]').value;
+
+  if (post_url.split("/")[0] != "http:") {
+    post_url = `http://${post_url}`;
+  }
 
   const response = await fetch("/api/posts", {
     method: "POST",
